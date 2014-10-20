@@ -1,0 +1,10 @@
+<h1>Post</h1>
+
+<form class="edit-post">
+  <input type="text" name="post[title]" value="<%= post.escape("title") %>">
+  <textarea name="post[body]"><%= post.escape("body") %></textarea>
+  <button class="submit">Save</button>
+</form>
+
+
+
