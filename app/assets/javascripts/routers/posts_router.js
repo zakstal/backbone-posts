@@ -17,7 +17,7 @@ JournalApp.Routers.PostsRouter = Backbone.Router.extend({
       collection: JournalApp.posts
     });
 
-    this.addContent(indexView);
+    this.addSidebar(indexView);
   },
 
   postsShow: function (id) {
@@ -26,6 +26,10 @@ JournalApp.Routers.PostsRouter = Backbone.Router.extend({
     });
 
     this.addContent(postShow);
+
+    // is there a better way to do this?
+    // could add this to addContent/addSidebar
+    // Backbone.history.navigate("", {trigger: true})
   },
 
   postEdit: function (id) {
@@ -46,8 +50,12 @@ JournalApp.Routers.PostsRouter = Backbone.Router.extend({
     this.addContent(newForm);
   },
 
+  addSidebar: function (content) {
+    this.el.find(".sidebar").html(content.render().$el);
+  },
+
   addContent: function (content) {
-    this.el.html(content.render().$el);
+    this.el.find(".content").html(content.render().$el);
   }
 
 });
